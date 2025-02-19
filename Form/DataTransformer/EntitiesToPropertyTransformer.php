@@ -38,13 +38,13 @@ class EntitiesToPropertyTransformer implements DataTransformerInterface
      */
     public function transform(mixed $value): mixed
     {
-        if (empty($entities)) {
+        if (empty($value)) {
             return array();
         }
 
         $data = array();
 
-        foreach ($entities as $entity) {
+        foreach ($value as $entity) {
             $text = is_null($this->textProperty)
                 ? (string) $entity
                 : $this->accessor->getValue($entity, $this->textProperty);
