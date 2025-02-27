@@ -38,22 +38,22 @@ class EntityToPropertyTransformer implements DataTransformerInterface
     public function transform(mixed $value): mixed
     {
         $data = array();
-        if (empty($entity)) {
+        if (empty($value)) {
             return $data;
         }
 
         $text = is_null($this->textProperty)
-            ? (string) $entity
-            : $this->accessor->getValue($entity, $this->textProperty);
+            ? (string) $value
+            : $this->accessor->getValue($value, $this->textProperty);
 
-        if ($this->em->contains($entity)) {
-            $value = (string) $this->accessor->getValue($entity, $this->primaryKey);
+        if ($this->em->contains($value)) {
+            $transformedValue = (string) $this->accessor->getValue($value, $this->primaryKey);
         } else {
-            $value = $this->newTagPrefix . $text;
+            $transformedValue = $this->newTagPrefix . $text;
             $text = $text.$this->newTagText;
         }
 
-        $data[$value] = $text;
+        $data[$transformedValue] = $text;
 
         return $data;
     }
