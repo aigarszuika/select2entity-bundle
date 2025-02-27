@@ -1,6 +1,6 @@
 {
     "name": "tetranz/select2entity-bundle",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "type": "symfony-bundle",
     "description": "A Symfony bundle that integrates Select2 as a drop-in replacement for a standard entity field on a Symfony form.",
     "keywords": ["symfony","select2", "typeahead","autocomplete"],
